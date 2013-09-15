@@ -1,25 +1,27 @@
-<%= simple_nested_form_for(@user) do |user_f| %>
-  <%= user_f.error_notification %>
+<%= simple_form_for(@user) do |f| %>
+  <%= f.error_notification %>
+  <div class="pure-form pure-form-stacked">
+    <div class="form-inputs">
+      <div class="fields">
+        <%= f.input :email, :label=>"Email Address"  %>
+        <%= f.input :password %>
+        <%= f.input :password_confirmation, :label=>"Confirm your password"%>
 
-  <div class="form-inputs">
-    <div class="fields">
-      <div class="min_user">
-        <!-- x icon to remove -->
-        <!-- fields -->
-        <%= user_f.input :email %>
-        <%= user_f.input :password %>
-        <%= user_f.input :password_confirmation %>
+	<% if current_user && current_user.is_admin? %>
+	    <%= f.input :role, :collection => User::ROLES, :label=>"Choose role", :class=>"pure-input-1-2"%>
+	<% end %>
+
+	<%= f.input :group_id, :collection => Group.all, :label_method => lambda{|g| g.name}, :value_method => lambda{|g| g.id}%>
+
+
+	<br>
+	<%= f.file_field :resume, :label=>"Upload your resume for our sponsors!" %>
+	<br>
       </div>
-     <% if current_user && current_user.is_admin? %>
-       <%= user_f.input :role %>
-     <% end %>
-     <%= user_f.input :group_id, :collection => Group.all, :label_method => lambda{|g| g.name}, :value_method => lambda{|g| g.id}%>
-     <%= user_f.file_field :resume %>
-</div>
+      <div class="form-actions">
+	<%= f.button :submit, :class=>"pure-button pure-button-primary"%>
+      </div>
     </div>
   </div>
 
-  <div class="form-actions">
-    <%= user_f.button :submit %>
-  </div>
 <% end %>
