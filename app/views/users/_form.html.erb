@@ -1,6 +1,6 @@
 <%= simple_form_for(@user) do |f| %>
   <%= f.error_notification %>
-  <div class="pure-form pure-form-stacked">
+  <div class="pure-form pure-form-stacked" style="padding:20px 60px">
     <div class="form-inputs">
       <div class="fields">
         <%= f.input :email, :label=>"Email Address"  %>
@@ -17,9 +17,10 @@
 	<br>
 	<%= f.file_field :resume, :label=>"Upload your resume for our sponsors!" %>
 	<br>
+
+      <div class="form-actions"><p>
+	<%= f.button :submit, :class=>"pure-button pure-button-primary"%></p>
       </div>
-      <div class="form-actions">
-	<%= f.button :submit, :class=>"pure-button pure-button-primary"%>
       </div>
     </div>
   </div>
