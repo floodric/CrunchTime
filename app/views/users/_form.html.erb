@@ -3,15 +3,12 @@
   <div class="pure-form pure-form-stacked">
     <div class="form-inputs">
       <div class="fields">
-
-        <!-- x icon to remove -->
-        <!-- fields -->
         <%= f.input :email, :label=>"Email Address"  %>
         <%= f.input :password %>
         <%= f.input :password_confirmation, :label=>"Confirm your password"%>
 
 	<% if current_user && current_user.is_admin? %>
-	<%= f.input :role, :collection => User::ROLES, :label=>"Choose role", :class=>"pure-input-1-2"%>
+	    <%= f.input :role, :collection => User::ROLES, :label=>"Choose role", :class=>"pure-input-1-2"%>
 	<% end %>
 
 	<%= f.input :group_id, :collection => Group.all, :label_method => lambda{|g| g.name}, :value_method => lambda{|g| g.id}%>
@@ -21,9 +18,10 @@
 	<%= f.file_field :resume, :label=>"Upload your resume for our sponsors!" %>
 	<br>
       </div>
+      <div class="form-actions">
+	<%= f.button :submit, :class=>"pure-button pure-button-primary"%>
+      </div>
     </div>
+  </div>
 
-    <%= f.button :submit, :class=>"pure-button pure-button-primary"%>
-
-</div>
 <% end %>
