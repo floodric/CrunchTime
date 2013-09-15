@@ -11,6 +11,17 @@
 </p>
 <% end %>
 
+<% if @user.group.users.length > 0 %>
+  <h3>On a team with </h3>
+  <ul>
+  <% @user.group.users.each do |user| %>
+    <% unless user.id == current_user.id %>
+      <li><%= link_to(user.email+'', user) %></li>
+    <% end %>
+  <% end %>
+  </ul>
+<% end %>
+
 <p>
 </p>
 <%= link_to 'Edit', edit_user_path(@user) %> |

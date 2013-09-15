@@ -17,6 +17,7 @@ gem 'better_errors', '0.7.0'
   gem 'quiet_assets', '1.0.2'
   gem 'thin', '1.5.0'
 gem 'cmu-person'
+gem 'binding_of_caller'
 
 # Gems used only for assets and not required
 # in production environments by default.

@@ -2,10 +2,10 @@ class User < ActiveRecord::Base
   # Use built-in rails support for password protection
   has_secure_password
   
-  attr_accessible :email, :password, :password_confirmation, :role, :student_id
+  attr_accessible :email, :password, :password_confirmation, :role, :group_id
   
   # Relationships
-#  belongs_to :student
+  belongs_to :group
   
   # Validations
   validates_uniqueness_of :email, :case_sensitive => false

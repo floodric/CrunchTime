@@ -11,8 +11,9 @@
         <%= f.input :password_confirmation %>
       </div>
      <% if current_user && current_user.is_admin? %>
-       <%= f.input :password_confirmation %>
+       <%= f.input :role %>
      <% end %>
+     <%= f.input :group_id %>
     </div>
   </div>
 

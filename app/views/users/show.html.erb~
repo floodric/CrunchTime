@@ -5,9 +5,21 @@
 </p>
 
 <% if current_user && current_user.is_admin? %>
+<%# hack to avoid current_user nil derefs %>
 <p>
   <b>Role:</b> <%= @user.role ? @user.role.capitalize : "unset" %>
 </p>
+<% end %>
+
+<% if @user.group.users.length > 0 %>
+  <h3>On a team with </h3>
+  <ul>
+  <% @user.group.users.each do |user| %>
+    <% unless user.id == current_user.id %>
+      <li><%= link_to(user.id, user.email+'') %></li>
+    <% end %>
+  <% end %>
+  </ul>
 <% end %>
 
 <p>

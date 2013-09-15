@@ -11,14 +11,5 @@
 </p>
 
 
-<% if @group.users.length > 0 %>
-  <h3>On the team: </h3>
-  <ul>
-  <% @group.users.each do |user| %>
-    <li><%= link_to(user.email+'', user) %></li>
-  <% end %>
-  </ul>
-<% end %>
-
 <%= link_to 'Edit', edit_group_path(@group) %> |
 <%= link_to 'Back', groups_path %>
