@@ -1,25 +1,38 @@
-<%= simple_form_for(@user) do |f| %>
-  <%= f.error_notification %>
+<%= simple_nested_form_for(@user) do |user_f| %>
+  <%= user_f.error_notification %>
 
   <div class="form-inputs">
     <div class="fields">
       <div class="min_user">
         <!-- x icon to remove -->
         <!-- fields -->
-        <%= f.input :email %>
-        <%= f.input :password %>
-        <%= f.input :password_confirmation %>
+        <%= user_f.input :email %>
+        <%= user_f.input :password %>
+        <%= user_f.input :password_confirmation %>
       </div>
      <% if current_user && current_user.is_admin? %>
-       <%= f.input :role %>
+       <%= user_f.input :role %>
      <% end %>
-     <%= f.input :group_id, :collection => Group.all, :label_method => {|g| g.name}, :value_method => {|g| g.id}%>
-     <%= f.file_field :resume %>
+     <%= user_f.input :group_id, :collection => Group.all, :label_method => lambda{|g| g.name}, :value_method => lambda{|g| g.id}%>
+     <p> or create a group</p>
+    <div class="span5">
+    <legend>Group for the User</legend>
+      <div id="group_user">
+        <%= user_f.simple_fields_for :group do |group_f| %>
+          <%= render :partial => "group_fields", :locals => { :f => group_f } %>
+        <% end %>
+        <p>
+          <br />
+          <%= user_f.link_to_add(raw("<i class='icon-plus icon-white'></i> Add Group"), :group, :class => 'btn btn-mini btn-primary') %>
+        </p>
+      </div>
+    </div>
+     <%= user_f.file_field :resume %>
 </div>
     </div>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= user_f.button :submit %>
   </div>
 <% end %>
