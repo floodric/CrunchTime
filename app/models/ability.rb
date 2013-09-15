@@ -9,6 +9,8 @@ class Ability
       # can read themselves
       can :read, :all
 
+      can :create, User
+ 
       can :update, User do |u|
         u.id == user.id
       end
@@ -18,8 +20,8 @@ class Ability
       end
 
     else
-      can :read, :groups
       can :create, :user
+      can :read, :groups
     end
     # The second argument is the resource the user can perform the action on. 
     # If you pass :all it will apply to every resource. Otherwise pass a Ruby

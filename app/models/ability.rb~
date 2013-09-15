@@ -9,12 +9,14 @@ class Ability
       # can read themselves
       can :read, :all
 
+      can :create, User
+ 
       can :update, User do |u|
         u.id == user.id
       end
    
       can :update, Group do |g|
-        (user in g.users)
+        g.users.include?(u)
       end
 
     else
