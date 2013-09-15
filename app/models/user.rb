@@ -2,7 +2,9 @@ class User < ActiveRecord::Base
   # Use built-in rails support for password protection
   has_secure_password
   
-  attr_accessible :email, :password, :password_confirmation, :role, :group_id
+  attr_accessible :email, :password, :password_confirmation, :role, :group_id, :resume
+
+  mount_uploader :resume, ResumeUploader
   
   # Relationships
   belongs_to :group
