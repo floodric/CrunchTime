@@ -13,7 +13,7 @@
      <% if current_user && current_user.is_admin? %>
        <%= f.input :role %>
      <% end %>
-     <%= f.input :group_id %>
+     <%= f.input :group_id, :collection => Group.all, :label_method => lambda{|g| g.name}, :value_method => lambda{|g| g.id}%>
      <%= f.file_field :resume %>
 </div>
     </div>

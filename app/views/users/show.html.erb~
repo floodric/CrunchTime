@@ -1,7 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Email:</b> <%= @user.email %>
+  <b>Name:</b> <%= @user.first_name + ' ' + @user.last_name %>
+</p>
+
+<p>
+  <b>Grade:</b> <%= @user.grade %>
 </p>
 
 <% if current_user && current_user.is_admin? %>
@@ -22,6 +26,7 @@
   </ul>
 <% end %>
 
+<%= link_to('Download Resume', @user.resume.url) %>
 <p>
 </p>
 <%= link_to 'Edit', edit_user_path(@user) %> |

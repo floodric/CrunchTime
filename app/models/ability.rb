@@ -8,8 +8,18 @@ class Ability
     elsif user.role? :member
       # can read themselves
       can :read, :all
+
+      can :update, User do |u|
+        u.id == user.id
+      end
+   
+      can :update, Group do |g|
+        g.users.include?(u)
+      end
+
     else
       can :read, :groups
+      can :create, :user
     end
     # The second argument is the resource the user can perform the action on. 
     # If you pass :all it will apply to every resource. Otherwise pass a Ruby

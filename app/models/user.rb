@@ -25,6 +25,10 @@ class User < ActiveRecord::Base
     return false if role.nil?
     role.downcase.to_sym == authorized_role
   end
+
+  def name
+    return self.first_name + ' ' + self.last_name
+  end
   
   # alternative methods (some find more natural...)
   def is_admin?
