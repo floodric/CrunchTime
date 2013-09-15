@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
     user = User.find_by_email(params[:email])
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect_to home_path, notice: "Welcome #{user.email}. You are logged into HackCMU CrunchTime system"
+      redirect_to user_path(user.id), notice: "Welcome #{user.name ? user.name : user.email}. You are logged into HackCMU CrunchTime system"
     else
       flash.now.alert = "Email or password is invalid"
       render "new"
