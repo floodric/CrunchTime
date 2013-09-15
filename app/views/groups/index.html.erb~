@@ -10,7 +10,7 @@
 
 <% @groups.each do |group| %>
   <tr>
-    <td><%= group.name %></td>
+    <td><%= link_to group.name, group %></td>
     <td><%= group.description %></td>
     <td><%= group.hack ? "Team Finished" : "Still Hacking" %></td>
     <td><%= group.users.size %></td>
@@ -21,5 +21,5 @@
 <br />
 
 <% if current_user && current_user.is_admin? %>
-  <%= link_to 'New Group', new_group_path %>
+  <%= link_to 'New Group', new_group_path , :class => "pure-button" %>
 <% end %>
