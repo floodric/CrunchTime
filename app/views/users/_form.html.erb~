@@ -14,19 +14,6 @@
        <%= user_f.input :role %>
      <% end %>
      <%= user_f.input :group_id, :collection => Group.all, :label_method => lambda{|g| g.name}, :value_method => lambda{|g| g.id}%>
-     <p> or create a group</p>
-    <div class="span5">
-    <legend>Group for the User</legend>
-      <div id="group_user">
-        <%= user_f.simple_fields_for :group do |group_f| %>
-          <%= render :partial => "group_fields", :locals => { :f => group_f } %>
-        <% end %>
-        <p>
-          <br />
-          <%= user_f.link_to_add(raw("<i class='icon-plus icon-white'></i> Add Group"), :group, :class => 'btn btn-mini btn-primary') %>
-        </p>
-      </div>
-    </div>
      <%= user_f.file_field :resume %>
 </div>
     </div>

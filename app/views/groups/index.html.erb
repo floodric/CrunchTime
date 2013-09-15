@@ -10,7 +10,7 @@
 
 <% @groups.each do |group| %>
   <tr>
-    <td><%= group.name %></td>
+    <td><%= link_to group.name, group %></td>
     <td><%= group.description %></td>
     <td><%= group.hack ? "Team Finished" : "Still Hacking" %></td>
     <td><%= group.users.size %></td>

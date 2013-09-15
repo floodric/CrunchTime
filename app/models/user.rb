@@ -2,14 +2,12 @@ class User < ActiveRecord::Base
   # Use built-in rails support for password protection
   has_secure_password
   
-  attr_accessible :email, :password, :password_confirmation, :role, :group_id, :resume, :first_name, :last_name, :grade, :group_attributes
+  attr_accessible :email, :password, :password_confirmation, :role, :group_id, :resume, :first_name, :last_name, :grade
 
   mount_uploader :resume, ResumeUploader
 
   # Relationships
   belongs_to :group
- 
-  accepts_nested_attributes_for :group, :reject_if => lambda { |g| g[:name].blank?} 
  
 
   
