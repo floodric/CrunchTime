@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   # Use built-in rails support for password protection
   has_secure_password
   
-  attr_accessible :email, :password, :password_confirmation, :role, :group_id, :resume
+  attr_accessible :email, :password, :password_confirmation, :role, :group_id, :resume, :first_name, :last_name, :grade
 
   mount_uploader :resume, ResumeUploader
   
@@ -15,6 +15,8 @@ class User < ActiveRecord::Base
   #validates_inclusion_of :active, :in => [true, false], :message => "must be true or false"
   validates_inclusion_of :role, :in => %w[admin member], :message => "is not recognized by the system"
   #validate :student_is_active_in_system, :on => :create
+  validate :is_cmu_person
+
   
   # for use in authorizing with CanCan
   ROLES = [['Administrator', :admin],['Member', :member]]
@@ -38,6 +40,21 @@ class User < ActiveRecord::Base
     find_by_email(email).try(:authenticate, password)
   end
   
+
+  private
+  def is_cmu_person
+    cmuperson = nil
+    begin
+      #split their email by the at, get their andrew, use it
+      cmuperson = CMU::Person.find(self.email.split('@')[0])
+      self.first_name = cmuperson.first_name
+      self.last_name = cmuperson.last_name
+      self.grade = cmuperson.grade
+    rescue CMU::RecordNotFound => e
+      errors.add(:email, self.email.split('@')[0]+" is not a valid andrew id")
+    end
+  end
+
 
   #password reset token
   # before_create { generate_token(:auth_token) }

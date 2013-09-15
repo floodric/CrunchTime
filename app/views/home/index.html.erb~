@@ -58,7 +58,7 @@
                     </h2>
 
                     <p>
-                        <%= link_to "login", login_path,  :class=>"pure-button primary-button"   %>
+                        <%= link_to "login", login_path,  :class=>"ui-button-text button_text"   %>
 			Sign up for Demo</a>
                     </p>
                 </div>
