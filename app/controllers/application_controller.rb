@@ -6,7 +6,6 @@ class ApplicationController < ActionController::Base
     redirect_to root_url#, :alert => exception.message
   end
 
-  private
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end

@@ -10,9 +10,10 @@ gem 'simple_form'
 gem 'will_paginate'
 gem 'jquery-rails'
 gem 'carrierwave'
+gem 'validates_timeliness', '3.0.14'
 gem 'cancan'
 gem "nested_form", :git => 'git://github.com/ryanb/nested_form.git'
-  gem 'better_errors', '0.7.0'
+gem 'better_errors', '0.7.0'
 
 # Gems used only for assets and not required
 # in production environments by default.
