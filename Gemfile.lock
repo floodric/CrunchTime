@@ -44,6 +44,8 @@ GEM
     carrierwave (0.8.0)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
+    cmu-person (0.0.5)
+      net-ldap
     coderay (1.0.9)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
@@ -68,6 +70,7 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.25)
     multi_json (1.8.0)
+    net-ldap (0.3.1)
     polyglot (0.3.3)
     quiet_assets (1.0.2)
       railties (>= 3.1, < 5.0)
@@ -136,6 +139,7 @@ DEPENDENCIES
   better_errors (= 0.7.0)
   cancan
   carrierwave
+  cmu-person
   coffee-rails (~> 3.2.1)
   jquery-rails
   nested_form!

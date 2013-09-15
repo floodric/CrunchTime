@@ -9,10 +9,10 @@
         <%= f.input :email %>
         <%= f.input :password %>
         <%= f.input :password_confirmation %>
-        <%# if current_user.is_admin? %>
-          <%=# f.input :role, :collection => User::ROLES %>
-        <%# end %>
       </div>
+     <% if current_user && current_user.is_admin? %>
+       <%= f.input :password_confirmation %>
+     <% end %>
     </div>
   </div>
 

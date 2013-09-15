@@ -8,7 +8,9 @@ class Ability
     elsif user.role? :member
       # can read themselves
       can :read, :all
-
+    else
+      can :read, :groups
+    end
     # The second argument is the resource the user can perform the action on. 
     # If you pass :all it will apply to every resource. Otherwise pass a Ruby
     # class of the resource.
