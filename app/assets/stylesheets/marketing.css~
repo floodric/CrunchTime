@@ -89,7 +89,7 @@ body .primary-button {
 
 #main-content{
   margin-top:60px;
-  width:800px;
+  width:600px;
   margin-left:auto;
-  margin-right:auto;
+  margin-left:auto;
 }
